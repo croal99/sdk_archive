@@ -62,11 +62,46 @@ The compiled package will be in the ```gl_sdk/<arch>/bin``` folder
 It is recommended that you use the ```V=s``` flag at the end of the ```make``` command, but it is not required.
 The compiler will print all messages and show if there are any errrors. If you know the packages are all correct, you can omit it for a more clean output.
 
-To make a custom package from any program you can follow the guides here:
+Some packages require other packages to compile. If your package gives warnings like this:
+
+```bash
+WARNING: Makefile 'package/ddserver/Makefile' has a dependency on 'uclibcxx', which does not exist
+```
+
+Before the compilation begins, or when compiling with the ```V=s``` flag you get an error towards the end like this:
+
+```bash
+Package ddserver is missing dependencies for the following libraries:
+libuClibc++.so.0
+```
+
+You will need to install the dependency before compiling your package. To do that run:
+
+```bash
+./scripts/feeds update -f
+```
+
+This will update the package lists, then run:
+
+```bash
+./scripts/feeds install <dependency_name>
+```
+
+For the example above, it required the uClibc++ library, so we install it:
+
+```bash
+./scripts/feeds install uclibcxx
+```
+
+Re-run the ```make package/<package_name>/compile V=s``` command and your package should compile without issues.
+
+---
+
+    To make a custom package from any program you can follow the guides here:
 
 https://github.com/mwarning/openwrt-examples
 
-And read about the OpenWRT package structure here:
+    And read about the OpenWRT package structure here:
 
 https://openwrt.org/docs/guide-developer/packages
 
