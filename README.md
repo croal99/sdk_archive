@@ -46,18 +46,18 @@ The ```make menuconfig``` command does not need to be run to compile a package, 
 Place your package in ```gl_sdk/<arch>/package/```, then run:
 
 ```bash
-cd gl_sdk/<arch>
+cd gl_sdk/<arch>/
 make package/<package_name>/compile V=s
 ```
 
 To compile the OpenSSL package for the S1300, it will look like this:
 
 ```bash
-cd gl_sdk/ipq806x
+cd gl_sdk/ipq806x/
 make package/openssl/compile V=s
 ```
 
-The compiled package will be in the ```gl_sdk/<arch>/bin``` folder
+The compiled package will be in the ```gl_sdk/<arch>/bin/``` folder
 
 It is recommended that you use the ```V=s``` flag at the end of the ```make``` command, but it is not required.
 The compiler will print all messages and show if there are any errrors. If you know the packages are all correct, you can omit it for a more clean output.
