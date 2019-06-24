@@ -7,7 +7,7 @@ OpenWRT SDK for GL.iNet devices. The OpenWRT SDK is a pre-compiled environment s
 - x86_64 platform
 - Ubuntu or another linux distro
 
-Compiling under Windows can be done using the Windows Subsystem For Linux (WSL) with Ubuntu installed to it. Follow the guide bellow, installing Ubuntu 18.04 LTS from the Windows Store:
+Compiling under Windows can be done using the Windows Subsystem For Linux (WSL) with Ubuntu installed to it. Follow the guide bellow, installing Ubuntu 18.04 LTS from the Microsoft Store:
 
 https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
@@ -18,8 +18,8 @@ To use the SDK on your system will usually require you to install some extra pac
 For **Ubuntu 18.04 LTS**, run the following commands to install the required packages:
 
 ```bash
-sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl1.0-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev
+sudo apt update && sudo apt upgrade -y
+sudo apt install asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl1.0-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev -y
 ```
 
 ## Clone the SDK to your system ##
@@ -46,18 +46,18 @@ The ```make menuconfig``` command does not need to be run to compile a package, 
 Place your package in ```gl_sdk/<arch>/package/```, then run:
 
 ```bash
-cd gl_sdk/<arch>
+cd gl_sdk/<arch>/
 make package/<package_name>/compile V=s
 ```
 
 To compile the OpenSSL package for the S1300, it will look like this:
 
 ```bash
-cd gl_sdk/ipq806x
+cd gl_sdk/ipq806x/
 make package/openssl/compile V=s
 ```
 
-The compiled package will be in the ```gl_sdk/<arch>/bin``` folder
+The compiled package will be in the ```gl_sdk/<arch>/bin/``` folder
 
 It is recommended that you use the ```V=s``` flag at the end of the ```make``` command, but it is not required.
 The compiler will print all messages and show if there are any errrors. If you know the packages are all correct, you can omit it for a more clean output.
